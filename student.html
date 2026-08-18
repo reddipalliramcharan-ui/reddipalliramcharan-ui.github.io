@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <div>
+                <h1>Student Management System</h1>
+                <p>Manage student records easily</p>
+            </div>
+
+            <button class="add-btn" onclick="openForm()">
+                + Add Student
+            </button>
+        </header>
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <h3>Total Students</h3>
+                <p id="totalStudents">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Male Students</h3>
+                <p id="maleStudents">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Female Students</h3>
+                <p id="femaleStudents">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Departments</h3>
+                <p id="totalDepartments">0</p>
+            </div>
+
+        </section>
+
+        <!-- Search and Filter -->
+        <section class="controls">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search by name or ID..."
+                onkeyup="displayStudents()"
+            >
+
+            <select id="departmentFilter" onchange="displayStudents()">
+                <option value="all">All Departments</option>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="MECH">MECH</option>
+                <option value="CIVIL">CIVIL</option>
+            </select>
+
+            <button class="clear-btn" onclick="clearAllStudents()">
+                Clear All
+            </button>
+
+        </section>
+
+        <!-- Student List -->
+        <section class="student-section">
+
+            <h2>Student Records</h2>
+
+            <div id="studentContainer" class="student-container">
+                <!-- Students will be displayed here -->
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- Student Form Modal -->
+    <div id="formModal" class="modal">
+
+        <div class="modal-content">
+
+            <span class="close" onclick="closeForm()">&times;</span>
+
+            <h2 id="formTitle">Add Student</h2>
+
+            <form id="studentForm">
+
+                <input type="hidden" id="editIndex">
+
+                <label>Student Name</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter student name"
+                    required
+                >
+
+                <label>Student ID</label>
+                <input
+                    type="text"
+                    id="studentId"
+                    placeholder="Example: STU101"
+                    required
+                >
+
+                <label>Email</label>
+                <input
+                    type="email"
+                    id="studentEmail"
+                    placeholder="student@gmail.com"
+                    required
+                >
+
+                <label>Phone Number</label>
+                <input
+                    type="tel"
+                    id="studentPhone"
+                    placeholder="Enter phone number"
+                    required
+                >
+
+                <label>Gender</label>
+
+                <select id="studentGender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+
+                <label>Department</label>
+
+                <select id="studentDepartment" required>
+                    <option value="">Select Department</option>
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="EEE">EEE</option>
+                    <option value="MECH">MECH</option>
+                    <option value="CIVIL">CIVIL</option>
+                </select>
+
+                <label>Year</label>
+
+                <select id="studentYear" required>
+                    <option value="">Select Year</option>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="Final Year">Final Year</option>
+                </select>
+
+                <label>Percentage</label>
+
+                <input
+                    type="number"
+                    id="studentPercentage"
+                    placeholder="Enter percentage"
+                    min="0"
+                    max="100"
+                    required
+                >
+
+                <button type="submit" class="save-btn">
+                    Save Student
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
